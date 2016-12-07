@@ -1,15 +1,20 @@
 apply plugin: 'com.android.application'
+apply plugin: 'com.neenbedankt.android-apt'
 
 android {
-    compileSdkVersion 24
-    buildToolsVersion "24.0.2"
+    compileSdkVersion 23
+    buildToolsVersion "23.0.3"
     defaultConfig {
         applicationId "com.tabardel.weather"
         minSdkVersion 14
-        targetSdkVersion 24
+        targetSdkVersion 23
         versionCode 1
         versionName "1.0"
+        resConfigs("en", "fr")
         testInstrumentationRunner "android.support.test.runner.AndroidJUnitRunner"
+    }
+    packagingOptions {
+        exclude 'META-INF/LICENSE'
     }
     buildTypes {
         release {
@@ -20,10 +25,54 @@ android {
 }
 
 dependencies {
-    compile fileTree(dir: 'libs', include: ['*.jar'])
-    androidTestCompile('com.android.support.test.espresso:espresso-core:2.2.2', {
-        exclude group: 'com.android.support', module: 'support-annotations'
-    })
-    compile 'com.android.support:appcompat-v7:24.2.1'
-    testCompile 'junit:junit:4.12'
+    compile fileTree(include: ['*.jar'], dir: 'libs')
+
+    //**********************// TEST //**********************//
+    def ESPRESSO_VERSION = '2.2.2'
+    androidTestCompile("com.android.support.test.espresso:espresso-core:${ESPRESSO_VERSION}") {
+        exclude module: 'support-annotations'
+        exclude group: 'com.android.support'
+    }
+    androidTestCompile "com.android.support.test.espresso:espresso-contrib:${ESPRESSO_VERSION}"
+    testCompile "junit:junit:4.12"
+
+    //**********************// ANDROID SUPPORT //**********************//
+    def ANDROID_SUPPORT_VERSION = '23.1.1'
+    compile("com.android.support:appcompat-v7:${ANDROID_SUPPORT_VERSION}",
+            "com.android.support:design:${ANDROID_SUPPORT_VERSION}",
+            "com.android.support:recyclerview-v7:${ANDROID_SUPPORT_VERSION}",
+            "com.android.support:palette-v7:${ANDROID_SUPPORT_VERSION}",
+            "com.android.support:support-annotations:${ANDROID_SUPPORT_VERSION}",
+            "com.android.support:cardview-v7:${ANDROID_SUPPORT_VERSION}")
+
+    //**********************// NETWORK //**********************//
+    def RETROFIT_VERSION = '2.1.0'
+    compile("com.squareup.retrofit2:retrofit:${RETROFIT_VERSION}",
+            "com.squareup.retrofit2:converter-jackson:${RETROFIT_VERSION}");
+    compile 'com.squareup.okhttp3:logging-interceptor:3.3.0'
+
+    //**********************// IMAGE //**********************//
+    //we include both to show how switch implementation in ImageModule with dagger
+    compile "com.github.bumptech.glide:glide:3.7.0"
+    compile "com.squareup.picasso:picasso:2.5.2"
+
+    //**********************// VIEW BINDS //**********************//
+    def BUTTERKNIFE_VERSION = "8.4.0"
+    compile "com.jakewharton:butterknife:${BUTTERKNIFE_VERSION}"
+    apt "com.jakewharton:butterknife-compiler:${BUTTERKNIFE_VERSION}"
+
+    //**********************// DEPENDENCIES INJECTION //**********************//
+    def DAGGER_VERSION = "2.5"
+    compile "com.google.dagger:dagger:${DAGGER_VERSION}"
+    compile "javax.inject:javax.inject:1"
+    provided "javax.annotation:jsr250-api:1.0"
+    apt "com.google.dagger:dagger-compiler:${DAGGER_VERSION}"
+    testApt "com.google.dagger:dagger-compiler:${DAGGER_VERSION}"
+    androidTestApt "com.google.dagger:dagger-compiler:${DAGGER_VERSION}"
+
+    //**********************// DETECT MEMORY LEAK //**********************//
+    def LEAK_CANARY_VERSION = "1.4"
+    debugCompile "com.squareup.leakcanary:leakcanary-android:${LEAK_CANARY_VERSION}"
+    releaseCompile "com.squareup.leakcanary:leakcanary-android-no-op:${LEAK_CANARY_VERSION}"
+    testCompile "com.squareup.leakcanary:leakcanary-android-no-op:${LEAK_CANARY_VERSION}"
 }
