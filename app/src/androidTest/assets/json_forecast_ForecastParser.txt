@@ -1,0 +1,22 @@
+{
+	"dt": 1481281200,
+	"temp": {
+		"day": 5.21,
+		"min": 2.27,
+		"max": 5.21,
+		"night": 2.27,
+		"eve": 5.21,
+		"morn": 5.21
+	},
+	"pressure": 1028.8,
+	"humidity": 94,
+	"weather": [{
+		"id": 801,
+		"main": "Clouds",
+		"description": "few clouds",
+		"icon": "02n"
+	}],
+	"speed": 3.19,
+	"deg": 183,
+	"clouds": 20
+}

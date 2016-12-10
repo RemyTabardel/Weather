@@ -1,0 +1,128 @@
+{
+	"city": {
+		"id": 2988507,
+		"name": "Paris",
+		"coord": {
+			"lon": 2.3488,
+			"lat": 48.853409
+		},
+		"country": "FR",
+		"population": 0
+	},
+	"cod": "200",
+	"message": 0.0063,
+	"cnt": 5,
+	"list": [{
+		"dt": 1481281200,
+		"temp": {
+			"day": 5.21,
+			"min": 2.27,
+			"max": 5.21,
+			"night": 2.27,
+			"eve": 5.21,
+			"morn": 5.21
+		},
+		"pressure": 1028.8,
+		"humidity": 94,
+		"weather": [{
+			"id": 801,
+			"main": "Clouds",
+			"description": "few clouds",
+			"icon": "02n"
+		}],
+		"speed": 3.19,
+		"deg": 183,
+		"clouds": 20
+	},
+	{
+		"dt": 1481367600,
+		"temp": {
+			"day": 7.34,
+			"min": 0.15,
+			"max": 8.79,
+			"night": 7.93,
+			"eve": 6.71,
+			"morn": 0.45
+		},
+		"pressure": 1026.12,
+		"humidity": 88,
+		"weather": [{
+			"id": 500,
+			"main": "Rain",
+			"description": "light rain",
+			"icon": "10d"
+		}],
+		"speed": 2.11,
+		"deg": 222,
+		"clouds": 36,
+		"rain": 0.31
+	},
+	{
+		"dt": 1481454000,
+		"temp": {
+			"day": 8.14,
+			"min": 5.15,
+			"max": 8.14,
+			"night": 5.15,
+			"eve": 6.68,
+			"morn": 7.43
+		},
+		"pressure": 1028.41,
+		"humidity": 98,
+		"weather": [{
+			"id": 500,
+			"main": "Rain",
+			"description": "light rain",
+			"icon": "10d"
+		}],
+		"speed": 1.97,
+		"deg": 283,
+		"clouds": 80,
+		"rain": 0.71
+	},
+	{
+		"dt": 1481540400,
+		"temp": {
+			"day": 4.39,
+			"min": 0.35,
+			"max": 4.39,
+			"night": 0.35,
+			"eve": 2.65,
+			"morn": 4.22
+		},
+		"pressure": 1027.44,
+		"humidity": 96,
+		"weather": [{
+			"id": 500,
+			"main": "Rain",
+			"description": "light rain",
+			"icon": "10d"
+		}],
+		"speed": 3.52,
+		"deg": 170,
+		"clouds": 64
+	},
+	{
+		"dt": 1481626800,
+		"temp": {
+			"day": 9.21,
+			"min": 3.57,
+			"max": 9.38,
+			"night": 3.57,
+			"eve": 6.75,
+			"morn": 9.38
+		},
+		"pressure": 1025.91,
+		"humidity": 0,
+		"weather": [{
+			"id": 500,
+			"main": "Rain",
+			"description": "light rain",
+			"icon": "10d"
+		}],
+		"speed": 3.71,
+		"deg": 306,
+		"clouds": 84,
+		"rain": 1.42
+	}]
+}
