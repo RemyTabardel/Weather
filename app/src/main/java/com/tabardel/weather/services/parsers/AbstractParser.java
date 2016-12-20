@@ -1,4 +1,4 @@
-package com.tabardel.weather.services.network.parsers;
+package com.tabardel.weather.services.parsers;
 
 import android.util.JsonReader;
 
@@ -21,10 +21,13 @@ public abstract class AbstractParser<T> {
         mValues.put(name, value);
     }
 
+    protected void addListValue(String listName, Object value) {
+
+    }
+
     protected <U> U getValue(String name) {
         return (U) mValues.get(name);
     }
-
 
     public abstract T parse(final JsonReader reader) throws IOException;
 }

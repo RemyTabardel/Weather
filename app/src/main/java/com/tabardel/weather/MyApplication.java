@@ -5,21 +5,22 @@ import android.os.StrictMode;
 
 import com.squareup.leakcanary.LeakCanary;
 import com.tabardel.weather.services.AppComponent;
+import com.tabardel.weather.services.AppModule;
+import com.tabardel.weather.services.DaggerAppComponent;
 
 /**
  * Created by TABARDEL_Remy on 07/12/2016.
  */
 
 public class MyApplication extends Application {
-    protected AppComponent mAppComponent;
-
+    public static AppComponent component;
 
     @Override
     public void onCreate() {
         super.onCreate();
 
         //init component for dependencies injections
-        mAppComponent = buildComponent();
+        component = buildComponent();
 
         if (BuildConfig.DEBUG) {
             //detect memory leak
@@ -30,14 +31,10 @@ public class MyApplication extends Application {
         }
     }
 
-    public AppComponent getComponent() {
-        return mAppComponent;
-    }
-
     protected AppComponent buildComponent() {
-        return null;/*DaggerAppComponent.builder()
+        return DaggerAppComponent.builder()
                 .appModule(new AppModule(this))
-                .build();*/
+                .build();
     }
 
     private void initStrictMode() {

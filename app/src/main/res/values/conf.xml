@@ -1,0 +1,5 @@
+<?xml version="1.0" encoding="utf-8"?>
+<resources>
+    <string name="weather_base_url">http://api.openweathermap.org/</string>
+    <string name="weather_app_id">8194ea842a9aef80a798c8ac0c320ec4</string>
+</resources>

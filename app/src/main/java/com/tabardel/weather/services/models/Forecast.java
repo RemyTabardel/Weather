@@ -7,7 +7,7 @@ import java.util.List;
  * Created by TABARDEL_Remy on 08/12/2016.
  */
 
-public class Forecast {
+public class Forecast implements Comparable<Forecast> {
     public final Date date;
     public final Temperature temperature;
     public final double pressure;
@@ -36,5 +36,9 @@ public class Forecast {
         this.deg = deg;
         this.clouds = clouds;
         this.rain = rain;
+    }
+
+    @Override public int compareTo(Forecast another) {
+        return this.date.compareTo(another.date);
     }
 }
