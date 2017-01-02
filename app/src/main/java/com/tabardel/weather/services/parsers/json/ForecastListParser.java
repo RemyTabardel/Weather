@@ -30,6 +30,8 @@ public class ForecastListParser extends AbstractParser<ForecastList> {
                 }
 
                 reader.endArray();
+            } else {
+                reader.skipValue();
             }
         }
 
