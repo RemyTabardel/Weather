@@ -24,6 +24,7 @@ public class ForecastListParser extends AbstractParser<ForecastList> {
             if (name.equals("list")) {
                 reader.beginArray();
 
+                 
                 while (reader.hasNext()) {
                     Forecast forecast = forecastParser.parse(reader);
                     addListValue(name, forecast);
