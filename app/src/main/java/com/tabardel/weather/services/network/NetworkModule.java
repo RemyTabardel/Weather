@@ -4,6 +4,7 @@ import android.content.Context;
 
 import com.tabardel.weather.BuildConfig;
 import com.tabardel.weather.R;
+import com.tabardel.weather.services.network.api.OpenWeatherApi;
 import com.tabardel.weather.services.network.retrofit.api.RetrofitOpenWeatherApi;
 
 import java.util.concurrent.TimeUnit;

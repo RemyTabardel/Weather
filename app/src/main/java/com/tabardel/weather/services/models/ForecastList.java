@@ -7,11 +7,9 @@ import java.util.List;
  */
 
 public class ForecastList {
-    public final City city;
     public final List<Forecast> forecasts;
 
-    public ForecastList(City city, List<Forecast> forecasts) {
-        this.city = city;
+    public ForecastList(List<Forecast> forecasts) {
         this.forecasts = forecasts;
     }
 }

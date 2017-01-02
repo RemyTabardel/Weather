@@ -21,7 +21,12 @@ public class ForecastListConverter extends AbstractConverter<ForecastList> {
     }
 
     @Override public <U> Converter<U, RequestBody> getRequestConverter() {
-        return U -> null;
+        return new Converter<U, RequestBody>() {
+            @Override
+            public RequestBody convert(U value) throws IOException {
+                return null;
+            }
+        };
     }
 
     @Override public Converter<ResponseBody, ForecastList> getResponseConverter() {

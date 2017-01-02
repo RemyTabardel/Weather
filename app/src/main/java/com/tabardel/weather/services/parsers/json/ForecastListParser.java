@@ -34,9 +34,7 @@ public class ForecastListParser extends AbstractParser<ForecastList> {
         }
 
         reader.endObject();
-        reader.close();
 
-        //no need to parse city here, only paris
-        return new ForecastList(null, getValue("list"));
+        return new ForecastList(getValue("list"));
     }
 }

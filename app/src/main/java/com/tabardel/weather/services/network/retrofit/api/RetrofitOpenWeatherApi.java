@@ -1,13 +1,14 @@
 package com.tabardel.weather.services.network.retrofit.api;
 
 import com.tabardel.weather.services.models.ForecastList;
-import com.tabardel.weather.services.network.OpenWeatherApi;
+import com.tabardel.weather.services.network.api.OpenWeatherApi;
 import com.tabardel.weather.services.network.retrofit.ConverterFactory;
 import com.tabardel.weather.services.network.retrofit.calls.OpenWeatherCalls;
 import com.tabardel.weather.services.network.retrofit.converters.ForecastListConverter;
 
 import okhttp3.OkHttpClient;
 import retrofit2.Converter;
+import rx.Observable;
 
 /**
  * Created by TABARDEL_Remy on 17/12/2016.
@@ -18,8 +19,8 @@ public class RetrofitOpenWeatherApi extends AbstractRetrofitApi<OpenWeatherCalls
         super(baseUrl, okHttpClient, OpenWeatherCalls.class);
     }
 
-    @Override public ForecastList getForecastList(String appid) {
-        return execute(getCalls().getForecastFive(appid));
+    @Override public Observable<ForecastList> getForecastList(String appid) {
+        return getCalls().getForecastFive(appid);
     }
 
     @Override

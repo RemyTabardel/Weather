@@ -53,7 +53,8 @@ dependencies {
 
     //**********************// NETWORK //**********************//
     def RETROFIT_VERSION = '2.1.0'
-    compile "com.squareup.retrofit2:retrofit:${RETROFIT_VERSION}";
+    compile "com.squareup.retrofit2:retrofit:${RETROFIT_VERSION}"
+    compile "com.squareup.retrofit2:adapter-rxjava:${RETROFIT_VERSION}"
     compile "com.squareup.okhttp3:logging-interceptor:3.3.0"
 
     //**********************// IMAGE //**********************//

@@ -7,6 +7,7 @@ import retrofit2.Call;
 import retrofit2.Converter;
 import retrofit2.Response;
 import retrofit2.Retrofit;
+import retrofit2.adapter.rxjava.RxJavaCallAdapterFactory;
 
 /**
  * Created by TABARDEL_Remy on 17/12/2016.
@@ -20,6 +21,7 @@ abstract class AbstractRetrofitApi<C> {
         Retrofit retrofit = new Retrofit.Builder()
                 .baseUrl(baseUrl)
                 .client(okHttpClient)
+                .addCallAdapterFactory(RxJavaCallAdapterFactory.create())
                 .addConverterFactory(getConverterFactory())
                 .build();
 

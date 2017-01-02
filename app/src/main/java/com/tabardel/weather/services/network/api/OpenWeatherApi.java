@@ -1,4 +1,4 @@
-package com.tabardel.weather.services.network;
+package com.tabardel.weather.services.network.api;
 
 import com.tabardel.weather.services.models.ForecastList;
 
@@ -9,5 +9,5 @@ import rx.Observable;
  */
 
 public interface OpenWeatherApi {
-    ForecastList getForecastList(String appid);
+    Observable<ForecastList> getForecastList(String appid);
 }

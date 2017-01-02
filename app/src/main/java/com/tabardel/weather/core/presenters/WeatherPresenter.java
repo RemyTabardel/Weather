@@ -6,7 +6,7 @@ import android.util.Log;
 import com.tabardel.weather.MyApplication;
 import com.tabardel.weather.services.models.Forecast;
 import com.tabardel.weather.services.models.ForecastList;
-import com.tabardel.weather.services.network.OpenWeatherApi;
+import com.tabardel.weather.services.network.api.OpenWeatherApi;
 import com.tabardel.weather.ui.views.WeatherView;
 
 import java.util.Collections;
@@ -17,6 +17,7 @@ import javax.inject.Inject;
 import rx.Observable;
 import rx.Scheduler;
 import rx.Subscriber;
+import rx.android.schedulers.AndroidSchedulers;
 import rx.schedulers.Schedulers;
 
 /**
@@ -34,9 +35,11 @@ public class WeatherPresenter implements BasePresenter {
     }
 
     public void loadForecastList(@NonNull String appid) {
-        Observable.just(openWeatherApi.getForecastList(appid))
+        openWeatherApi.getForecastList(appid)
                 .map(f -> extractListForecast(f))
                 .map(l -> sortListForecast(l))
+                .subscribeOn(Schedulers.newThread())
+                .observeOn(AndroidSchedulers.mainThread())
                 .subscribe(new Subscriber<List<Forecast>>() {
                     @Override public void onCompleted() {
                         Log.d("rx", "onCompleted");
