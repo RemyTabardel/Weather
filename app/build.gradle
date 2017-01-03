@@ -1,4 +1,5 @@
 apply plugin: 'com.android.application'
+apply plugin: 'me.tatarka.retrolambda'//we use retrolambda because cant instant run with jack
 
 android {
     compileSdkVersion 23
@@ -11,9 +12,6 @@ android {
         versionName "1.0"
         resConfigs("en", "fr")
         testInstrumentationRunner "android.support.test.runner.AndroidJUnitRunner"
-        jackOptions {
-            enabled true
-        }
     }
     compileOptions {
         sourceCompatibility JavaVersion.VERSION_1_8

@@ -12,5 +12,6 @@ import java.util.List;
 public interface WeatherView extends BaseView<WeatherPresenter> {
     @Override void setPresenter(WeatherPresenter presenter);
 
-    void setListViewContent(List<Forecast> listForecast);
+    void setListContent(List<Forecast> listForecast);
+    void errorRecoveringList();
 }

@@ -1,7 +1,6 @@
 package com.tabardel.weather.core.presenters;
 
 import android.support.annotation.NonNull;
-import android.util.Log;
 
 import com.tabardel.weather.MyApplication;
 import com.tabardel.weather.services.models.Forecast;
@@ -14,8 +13,6 @@ import java.util.List;
 
 import javax.inject.Inject;
 
-import rx.Observable;
-import rx.Scheduler;
 import rx.Subscriber;
 import rx.android.schedulers.AndroidSchedulers;
 import rx.schedulers.Schedulers;
@@ -42,15 +39,14 @@ public class WeatherPresenter implements BasePresenter {
                 .observeOn(AndroidSchedulers.mainThread())
                 .subscribe(new Subscriber<List<Forecast>>() {
                     @Override public void onCompleted() {
-                        Log.d("rx", "onCompleted");
                     }
 
                     @Override public void onError(Throwable e) {
-                        Log.d("rx", "onCompleted");
+                        mWeatherView.errorRecoveringList();
                     }
 
                     @Override public void onNext(List<Forecast> list) {
-                        Log.d("rx", "onCompleted");
+                        mWeatherView.setListContent(list);
                     }
                 });
     }

@@ -14,6 +14,7 @@ import java.util.Date;
 
 public class ForecastParser extends AbstractParser<Forecast> {
     @Override public Forecast parse(JsonReader reader) throws IOException {
+        clear();
         reader.beginObject();
 
         while (reader.hasNext()) {

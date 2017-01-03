@@ -14,6 +14,7 @@ import java.io.IOException;
 
 public class ForecastListParser extends AbstractParser<ForecastList> {
     @Override public ForecastList parse(JsonReader reader) throws IOException {
+        clear();
         ForecastParser forecastParser = new ForecastParser();
 
         reader.beginObject();
@@ -38,6 +39,6 @@ public class ForecastListParser extends AbstractParser<ForecastList> {
 
         reader.endObject();
 
-        return new ForecastList(getValue("list"));
+        return new ForecastList(getList("list"));
     }
 }
