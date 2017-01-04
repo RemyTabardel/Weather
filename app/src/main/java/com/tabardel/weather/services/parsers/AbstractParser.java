@@ -31,6 +31,10 @@ public abstract class AbstractParser<T> {
         mValues.clear();
     }
 
+    public boolean containsValue(String key) {
+        return mValues.containsKey(key);
+    }
+
     protected <U> U getValue(String key) throws IOException {
         U value = null;
 
