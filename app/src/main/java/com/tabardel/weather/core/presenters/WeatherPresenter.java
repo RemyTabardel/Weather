@@ -33,7 +33,6 @@ public class WeatherPresenter implements BasePresenter {
 
     public void loadForecastList(@NonNull String appid) {
         openWeatherApi.getForecastList(appid)
-                .map(f -> extractListForecast(f))
                 .map(l -> sortListForecast(l))
                 .subscribeOn(Schedulers.newThread())
                 .observeOn(AndroidSchedulers.mainThread())
@@ -51,13 +50,9 @@ public class WeatherPresenter implements BasePresenter {
                 });
     }
 
-    private List<Forecast> extractListForecast(ForecastList forecastList) {
+    private List<Forecast> sortListForecast(ForecastList forecastList) {
+        Collections.sort(forecastList.forecasts);
         return forecastList.forecasts;
-    }
-
-    private List<Forecast> sortListForecast(List<Forecast> listForecast) {
-        Collections.sort(listForecast);
-        return listForecast;
     }
 
     @Override public void subscribe() {
