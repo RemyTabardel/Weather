@@ -12,6 +12,7 @@ import com.tabardel.weather.services.models.Forecast;
 import com.tabardel.weather.ui.adapters.ForecastAdapter;
 import com.tabardel.weather.ui.views.WeatherView;
 
+import java.util.ArrayList;
 import java.util.List;
 
 import butterknife.BindView;
@@ -23,6 +24,8 @@ import butterknife.OnClick;
  */
 
 public class WeatherActivity extends AppCompatActivity implements WeatherView {
+    private static final String KEY_CURRENT_CHILD = "KEY_CURRENT_CHILD";
+    private static final String KEY_LIST_DATA = "KEY_LIST_DATA";
     private static final int VIEWSFLIPPER_CHILD_LOADING = 0;
     private static final int VIEWFLIPPER_CHILD_RETRY = 1;
     private static final int VIEWFLIPPER_CHILD_LIST = 2;
@@ -42,7 +45,14 @@ public class WeatherActivity extends AppCompatActivity implements WeatherView {
 
         initRecyclerView();
 
-        requestForecastList();
+        //request forecast list only on the first onCreate, ignore on rotation
+        if (savedInstanceState == null) {
+            requestForecastList();
+        } else {
+            //restore view state
+            mViewFlipper.setDisplayedChild(savedInstanceState.getInt(KEY_CURRENT_CHILD));
+            mForecastAdapter.setData(savedInstanceState.getParcelableArrayList(KEY_LIST_DATA));
+        }
     }
 
     private void initRecyclerView() {
@@ -74,5 +84,13 @@ public class WeatherActivity extends AppCompatActivity implements WeatherView {
 
     @Override public void errorRecoveringList() {
         mViewFlipper.setDisplayedChild(VIEWFLIPPER_CHILD_RETRY);
+    }
+
+    @Override
+    public void onSaveInstanceState(Bundle savedInstanceState) {
+        super.onSaveInstanceState(savedInstanceState);
+
+        savedInstanceState.putInt(KEY_CURRENT_CHILD, mViewFlipper.getDisplayedChild());
+        savedInstanceState.putParcelableArrayList(KEY_LIST_DATA, new ArrayList<>(mForecastAdapter.getData()));
     }
 }

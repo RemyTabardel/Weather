@@ -44,6 +44,10 @@ public class ForecastAdapter extends RecyclerView.Adapter<ForecastAdapter.ViewHo
         notifyDataSetChanged();
     }
 
+    public List<Forecast> getData() {
+        return mDataset;
+    }
+
     @Override public ViewHolder onCreateViewHolder(ViewGroup parent, int viewType) {
         View view = LayoutInflater.from(parent.getContext()).inflate(R.layout.item_forecast, parent, false);
         ViewHolder viewHolder = new ViewHolder(view);
