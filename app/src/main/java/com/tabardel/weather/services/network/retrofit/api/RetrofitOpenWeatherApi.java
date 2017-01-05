@@ -19,8 +19,8 @@ public class RetrofitOpenWeatherApi extends AbstractRetrofitApi<OpenWeatherCalls
         super(baseUrl, okHttpClient, OpenWeatherCalls.class);
     }
 
-    @Override public Observable<ForecastList> getForecastList(String appid) {
-        return getCalls().getForecastFive(appid);
+    @Override public Observable<ForecastList> getForecastList(String appid, String language) {
+        return getCalls().getForecastFive(appid, language);
     }
 
     @Override

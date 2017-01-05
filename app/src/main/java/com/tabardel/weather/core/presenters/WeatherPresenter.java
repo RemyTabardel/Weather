@@ -31,8 +31,8 @@ public class WeatherPresenter implements BasePresenter {
         this.mWeatherView = weatherView;
     }
 
-    public void loadForecastList(@NonNull String appid) {
-        openWeatherApi.getForecastList(appid)
+    public void loadForecastList(@NonNull String appid, @NonNull String language) {
+        openWeatherApi.getForecastList(appid, language)
                 .map(l -> sortListForecast(l))
                 .subscribeOn(Schedulers.newThread())
                 .observeOn(AndroidSchedulers.mainThread())

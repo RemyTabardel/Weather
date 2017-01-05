@@ -13,5 +13,6 @@ import rx.Observable;
 
 public interface OpenWeatherCalls {
     @GET("data/2.5/forecast/daily?q=Paris&units=metric&cnt=5")
-    Observable<ForecastList> getForecastFive(@Query("appid") String appid);
+    Observable<ForecastList> getForecastFive(@Query("appid") String appid,
+                                             @Query("lang") String language);
 }

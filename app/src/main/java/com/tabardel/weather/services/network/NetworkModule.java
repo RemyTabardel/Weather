@@ -45,7 +45,7 @@ public class NetworkModule {
     @Provides
     @Singleton
     OpenWeatherApi provideOpenWeatherApi(Context context, OkHttpClient okHttpClient) {
-        String baseUrl = context.getString(R.string.weather_base_url);
+        String baseUrl = context.getString(R.string.api_weather_base_url);
         return new RetrofitOpenWeatherApi(baseUrl, okHttpClient);
     }
 }

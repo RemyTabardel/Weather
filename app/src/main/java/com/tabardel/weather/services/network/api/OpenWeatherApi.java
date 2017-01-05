@@ -9,5 +9,5 @@ import rx.Observable;
  */
 
 public interface OpenWeatherApi {
-    Observable<ForecastList> getForecastList(String appid);
+    Observable<ForecastList> getForecastList(String appid, String language);
 }

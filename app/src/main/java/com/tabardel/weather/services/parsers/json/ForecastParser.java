@@ -27,7 +27,8 @@ public class ForecastParser extends AbstractParser<Forecast> {
             String name = reader.nextName();
 
             if (name.equals("dt")) {
-                setValue(name, new Date(reader.nextInt()));
+                long l = reader.nextLong();
+                setValue(name, new Date(l));
             } else if (name.equals("temp")) {
                 Temperature temperature = temperatureParser.parse(reader);
                 setValue(name, temperature);

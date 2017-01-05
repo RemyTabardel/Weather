@@ -39,13 +39,17 @@ public class WeatherActivity extends AppCompatActivity implements WeatherView {
 
         //mRecyclerView.setAdapter(new ForecastAdapter(this));
 
-        mWeatherPresenter.loadForecastList(getString(R.string.weather_app_id));
+        requestForecastList();
     }
 
     @OnClick(R.id.button_retry)
     public void onClickButtonRetry() {
         mViewFlipper.setDisplayedChild(VIEWSFLIPPER_CHILD_LOADING);
-        mWeatherPresenter.loadForecastList(getString(R.string.weather_app_id));
+        requestForecastList();
+    }
+
+    private void requestForecastList() {
+        mWeatherPresenter.loadForecastList(getString(R.string.api_weather_app_id), getString(R.string.api_weather_lang));
     }
 
     @Override public void setPresenter(WeatherPresenter presenter) {
