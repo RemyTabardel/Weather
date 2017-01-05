@@ -3,6 +3,8 @@ package com.tabardel.weather.services.models;
 import android.os.Parcel;
 import android.os.Parcelable;
 
+import com.tabardel.weather.tools.utils.ListUtils;
+
 import java.util.List;
 
 /**
@@ -13,7 +15,8 @@ public class ForecastList implements Parcelable {
     public final List<Forecast> forecasts;
 
     public ForecastList(List<Forecast> forecasts) {
-        this.forecasts = forecasts;
+        //avoid empty list
+        this.forecasts = ListUtils.defaultIfNull(forecasts);
     }
 
 
