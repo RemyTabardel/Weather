@@ -26,7 +26,7 @@ public class ForecastListTest {
     }
 
     @Test
-    public void testNForecastList_check_list_not_null() {
+    public void testForecastList_check_list_not_null() {
         List<Forecast> list = null;
         ForecastList forecastList = new ForecastList(list);
 

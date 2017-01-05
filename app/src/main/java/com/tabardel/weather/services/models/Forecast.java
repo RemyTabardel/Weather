@@ -3,7 +3,8 @@ package com.tabardel.weather.services.models;
 import android.os.Parcel;
 import android.os.Parcelable;
 
-import java.util.ArrayList;
+import com.tabardel.weather.tools.utils.ListUtils;
+
 import java.util.Date;
 import java.util.List;
 
@@ -11,7 +12,7 @@ import java.util.List;
  * Created by TABARDEL_Remy on 08/12/2016.
  */
 
-public class Forecast implements Comparable<Forecast>,Parcelable {
+public class Forecast implements Comparable<Forecast>, Parcelable {
     public final Date date;
     public final Temperature temperature;
     public final double pressure;
@@ -35,7 +36,8 @@ public class Forecast implements Comparable<Forecast>,Parcelable {
         this.temperature = temperature;
         this.pressure = pressure;
         this.humidity = humidity;
-        this.weathers = weathers;
+        //avoid null list
+        this.weathers = ListUtils.defaultIfNull(weathers);
         this.speed = speed;
         this.deg = deg;
         this.clouds = clouds;
