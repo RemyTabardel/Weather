@@ -2,5 +2,7 @@
 <resources>
     <string name="api_weather_base_url">http://api.openweathermap.org/</string>
     <string name="api_weather_app_id">8194ea842a9aef80a798c8ac0c320ec4</string>
+    <string name="api_weather_icon_base_url">http://openweathermap.org/img/w/</string>
+    <string name="api_weather_icon_ext">.png</string>
     <string name="api_weather_lang">en</string>
 </resources>

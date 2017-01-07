@@ -12,7 +12,7 @@
     <android.support.constraint.ConstraintLayout
         android:layout_width="match_parent"
         android:layout_height="match_parent"
-        android:background="@drawable/shape_item_forecast_bg"
+        android:background="@drawable/shape_primary_gradient_bg"
         android:padding="5dp">
 
         <TextView
