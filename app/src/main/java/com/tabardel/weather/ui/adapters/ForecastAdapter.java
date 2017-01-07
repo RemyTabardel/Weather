@@ -24,7 +24,8 @@ import butterknife.ButterKnife;
 
 public class ForecastAdapter extends RecyclerView.Adapter<ForecastAdapter.ViewHolder> {
     public static class ViewHolder extends RecyclerView.ViewHolder {
-        @BindView(R.id.textview_day) TextView textViewDay;
+        @BindView(R.id.textview_date) TextView textViewDate;
+        @BindView(R.id.textview_temp) TextView textViewTemp;
 
         public ViewHolder(View view) {
             super(view);
@@ -39,7 +40,7 @@ public class ForecastAdapter extends RecyclerView.Adapter<ForecastAdapter.ViewHo
     public ForecastAdapter(Context context) {
         mWeakContext = new WeakReference<>(context);
         mDataset = new ArrayList<>();
-        mDayDateFormat = new SimpleDateFormat("EEEE dd/MM/yyyy");
+        mDayDateFormat = new SimpleDateFormat("EEEE dd MMM yyyy");
     }
 
     public void setData(List<Forecast> forecasts) {
@@ -60,7 +61,12 @@ public class ForecastAdapter extends RecyclerView.Adapter<ForecastAdapter.ViewHo
 
     @Override public void onBindViewHolder(ViewHolder holder, int position) {
         Forecast currentForecast = mDataset.get(position);
-        holder.textViewDay.setText(mDayDateFormat.format(currentForecast.date));
+        holder.textViewDate.setText(mDayDateFormat.format(currentForecast.date));
+
+        if (mWeakContext != null) {
+            String temp = mWeakContext.get().getString(R.string.item_forecast_celcius, currentForecast.temperature.day);
+            holder.textViewTemp.setText(temp);
+        }
     }
 
     @Override public int getItemCount() {
