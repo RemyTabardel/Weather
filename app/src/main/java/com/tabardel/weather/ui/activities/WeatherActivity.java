@@ -1,5 +1,6 @@
 package com.tabardel.weather.ui.activities;
 
+import android.content.Intent;
 import android.os.Bundle;
 import android.support.design.widget.FloatingActionButton;
 import android.support.design.widget.Snackbar;
@@ -26,7 +27,7 @@ import butterknife.OnClick;
  * Created by TABARDEL_Remy on 07/12/2016.
  */
 
-public class WeatherActivity extends AppCompatActivity implements WeatherView {
+public class WeatherActivity extends AppCompatActivity implements WeatherView, ForecastAdapter.OnItemClickListener {
     private static final String KEY_CURRENT_CHILD = "KEY_CURRENT_CHILD";
     private static final String KEY_LIST_DATA = "KEY_LIST_DATA";
     private static final int VIEWFLIPPER_CHILD_LOADING = 0;
@@ -61,7 +62,7 @@ public class WeatherActivity extends AppCompatActivity implements WeatherView {
     }
 
     private void initRecyclerView() {
-        mForecastAdapter = new ForecastAdapter(this);
+        mForecastAdapter = new ForecastAdapter(this, this);
         //in landscape we can render more columns
         int nbColumns = getResources().getInteger(R.integer.activity_weather_nb_columns);
         mRecyclerView.setLayoutManager(new GridLayoutManager(this, nbColumns));
@@ -81,7 +82,8 @@ public class WeatherActivity extends AppCompatActivity implements WeatherView {
     @Override public void setListContent(List<Forecast> listForecast) {
         mForecastAdapter.setData(listForecast);
         mViewFlipper.setDisplayedChild(VIEWFLIPPER_CHILD_LIST);
-        showSnackbarAndFab(getString(R.string.activity_weather_snackbar_success));    }
+        showSnackbarAndFab(getString(R.string.activity_weather_snackbar_success));
+    }
 
     @Override public void errorRecoveringList() {
         mViewFlipper.setDisplayedChild(VIEWFLIPPER_CHILD_RETRY);
@@ -111,5 +113,9 @@ public class WeatherActivity extends AppCompatActivity implements WeatherView {
 
         savedInstanceState.putInt(KEY_CURRENT_CHILD, mViewFlipper.getDisplayedChild());
         savedInstanceState.putParcelableArrayList(KEY_LIST_DATA, new ArrayList<>(mForecastAdapter.getData()));
+    }
+
+    @Override public void onItemClick(Forecast forecast) {
+        startActivity(new Intent(this, WeatherDetailsActivity.class));
     }
 }

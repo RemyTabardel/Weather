@@ -36,11 +36,13 @@ public class ForecastAdapter extends RecyclerView.Adapter<ForecastAdapter.ViewHo
     private List<Forecast> mDataset;
     private WeakReference<Context> mWeakContext;
     private SimpleDateFormat mDayDateFormat;
+    private OnItemClickListener mOnItemClickListener;
 
-    public ForecastAdapter(Context context) {
+    public ForecastAdapter(Context context, OnItemClickListener onItemClickListener) {
         mWeakContext = new WeakReference<>(context);
         mDataset = new ArrayList<>();
         mDayDateFormat = new SimpleDateFormat("EEEE dd MMM yyyy");
+        mOnItemClickListener = onItemClickListener;
     }
 
     public void setData(List<Forecast> forecasts) {
@@ -60,16 +62,29 @@ public class ForecastAdapter extends RecyclerView.Adapter<ForecastAdapter.ViewHo
     }
 
     @Override public void onBindViewHolder(ViewHolder holder, int position) {
-        Forecast currentForecast = mDataset.get(position);
+        final Forecast currentForecast = mDataset.get(position);
+
         holder.textViewDate.setText(mDayDateFormat.format(currentForecast.date));
 
         if (mWeakContext != null) {
             String temp = mWeakContext.get().getString(R.string.item_forecast_celcius, currentForecast.temperature.day);
             holder.textViewTemp.setText(temp);
         }
+
+        if (mOnItemClickListener != null) {
+            holder.itemView.setOnClickListener(new View.OnClickListener() {
+                @Override public void onClick(View v) {
+                    mOnItemClickListener.onItemClick(currentForecast);
+                }
+            });
+        }
     }
 
     @Override public int getItemCount() {
         return mDataset.size();
+    }
+
+    public interface OnItemClickListener {
+        public void onItemClick(Forecast forecast);
     }
 }
