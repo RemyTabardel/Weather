@@ -116,6 +116,9 @@ public class WeatherActivity extends AppCompatActivity implements WeatherView, F
     }
 
     @Override public void onItemClick(Forecast forecast) {
-        startActivity(new Intent(this, WeatherDetailsActivity.class));
+        Intent intent = new Intent(this, WeatherDetailsActivity.class);
+        intent.putExtra(WeatherDetailsActivity.EXTRA_FORECAST, forecast);
+
+        startActivity(intent);
     }
 }
