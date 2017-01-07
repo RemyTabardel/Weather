@@ -1,4 +1,7 @@
 <resources>
     <string name="app_name">Weather</string>
-    <string name="activity_weather_button_retry">Retry</string>
+    <string name="activity_weather_error_crecovering">Error during recovering data, please check internet connection and try again.</string>
+    <string name="activity_weather_snackbar_error">aie aie aie :(</string>
+    <string name="activity_weather_snackbar_success">refresh done :)</string>
+
 </resources>

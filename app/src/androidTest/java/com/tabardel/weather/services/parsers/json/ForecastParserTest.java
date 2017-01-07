@@ -31,7 +31,7 @@ public class ForecastParserTest {
         ForecastParser forecastParser = new ForecastParser();
         Forecast forecast = forecastParser.parse(mJsonReader);
 
-        assertEquals(1481281200, forecast.date.getTime());
+        assertEquals(1481281200000L, forecast.date.getTime());
         assertNotNull(forecast.temperature);
         assertEquals(1028.8, forecast.pressure);
         assertEquals(94, forecast.humidity);

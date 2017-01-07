@@ -11,6 +11,7 @@ import com.tabardel.weather.R;
 import com.tabardel.weather.services.models.Forecast;
 
 import java.lang.ref.WeakReference;
+import java.text.SimpleDateFormat;
 import java.util.ArrayList;
 import java.util.List;
 
@@ -33,10 +34,12 @@ public class ForecastAdapter extends RecyclerView.Adapter<ForecastAdapter.ViewHo
 
     private List<Forecast> mDataset;
     private WeakReference<Context> mWeakContext;
+    private SimpleDateFormat mDayDateFormat;
 
     public ForecastAdapter(Context context) {
         mWeakContext = new WeakReference<>(context);
         mDataset = new ArrayList<>();
+        mDayDateFormat = new SimpleDateFormat("EEEE dd/MM/yyyy");
     }
 
     public void setData(List<Forecast> forecasts) {
@@ -57,7 +60,7 @@ public class ForecastAdapter extends RecyclerView.Adapter<ForecastAdapter.ViewHo
 
     @Override public void onBindViewHolder(ViewHolder holder, int position) {
         Forecast currentForecast = mDataset.get(position);
-        holder.textViewDay.setText("date : " + currentForecast.date);
+        holder.textViewDay.setText(mDayDateFormat.format(currentForecast.date));
     }
 
     @Override public int getItemCount() {

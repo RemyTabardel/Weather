@@ -1,9 +1,12 @@
 package com.tabardel.weather.ui.activities;
 
 import android.os.Bundle;
+import android.support.design.widget.FloatingActionButton;
+import android.support.design.widget.Snackbar;
 import android.support.v7.app.AppCompatActivity;
 import android.support.v7.widget.GridLayoutManager;
 import android.support.v7.widget.RecyclerView;
+import android.view.View;
 import android.widget.ViewFlipper;
 
 import com.tabardel.weather.R;
@@ -26,7 +29,7 @@ import butterknife.OnClick;
 public class WeatherActivity extends AppCompatActivity implements WeatherView {
     private static final String KEY_CURRENT_CHILD = "KEY_CURRENT_CHILD";
     private static final String KEY_LIST_DATA = "KEY_LIST_DATA";
-    private static final int VIEWSFLIPPER_CHILD_LOADING = 0;
+    private static final int VIEWFLIPPER_CHILD_LOADING = 0;
     private static final int VIEWFLIPPER_CHILD_RETRY = 1;
     private static final int VIEWFLIPPER_CHILD_LIST = 2;
 
@@ -34,6 +37,8 @@ public class WeatherActivity extends AppCompatActivity implements WeatherView {
     private ForecastAdapter mForecastAdapter;
     @BindView(R.id.recyclerview) RecyclerView mRecyclerView;
     @BindView(R.id.viewflipper) ViewFlipper mViewFlipper;
+    @BindView(R.id.fab) FloatingActionButton mFab;
+    @BindView(R.id.content) View mContentView;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -63,13 +68,9 @@ public class WeatherActivity extends AppCompatActivity implements WeatherView {
         mRecyclerView.setAdapter(mForecastAdapter);
     }
 
-    @OnClick(R.id.button_retry)
-    public void onClickButtonRetry() {
-        mViewFlipper.setDisplayedChild(VIEWSFLIPPER_CHILD_LOADING);
-        requestForecastList();
-    }
-
     private void requestForecastList() {
+        mFab.hide();
+        mViewFlipper.setDisplayedChild(VIEWFLIPPER_CHILD_LOADING);
         mWeatherPresenter.loadForecastList(getString(R.string.api_weather_app_id), getString(R.string.api_weather_lang));
     }
 
@@ -80,10 +81,28 @@ public class WeatherActivity extends AppCompatActivity implements WeatherView {
     @Override public void setListContent(List<Forecast> listForecast) {
         mForecastAdapter.setData(listForecast);
         mViewFlipper.setDisplayedChild(VIEWFLIPPER_CHILD_LIST);
-    }
+        showSnackbarAndFab(getString(R.string.activity_weather_snackbar_success));    }
 
     @Override public void errorRecoveringList() {
         mViewFlipper.setDisplayedChild(VIEWFLIPPER_CHILD_RETRY);
+        showSnackbarAndFab(getString(R.string.activity_weather_snackbar_error));
+    }
+
+    private void showSnackbarAndFab(final String text) {
+        //we show fab again after snackbar
+        Snackbar snackbar = Snackbar.make(mContentView, text, Snackbar.LENGTH_SHORT);
+        snackbar.setCallback(new Snackbar.Callback() {
+            @Override public void onDismissed(Snackbar snackbar, int event) {
+                super.onDismissed(snackbar, event);
+                mFab.show();
+            }
+        });
+        snackbar.show();
+    }
+
+    @OnClick(R.id.fab)
+    public void onClickFab() {
+        requestForecastList();
     }
 
     @Override
