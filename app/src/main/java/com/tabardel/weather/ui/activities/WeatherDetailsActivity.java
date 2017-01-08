@@ -1,8 +1,7 @@
 package com.tabardel.weather.ui.activities;
 
-import android.content.Intent;
-import android.support.v7.app.AppCompatActivity;
 import android.os.Bundle;
+import android.support.v7.app.AppCompatActivity;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.widget.ImageView;
@@ -11,7 +10,6 @@ import android.widget.TextView;
 
 import com.tabardel.weather.MyApplication;
 import com.tabardel.weather.R;
-import com.tabardel.weather.core.presenters.WeatherPresenter;
 import com.tabardel.weather.services.images.ImagesLoader;
 import com.tabardel.weather.services.models.Forecast;
 import com.tabardel.weather.services.models.Weather;
@@ -28,7 +26,8 @@ public class WeatherDetailsActivity extends AppCompatActivity {
 
     @Inject ImagesLoader mImagesLoader;
     @BindView(R.id.linearlayout_weather) LinearLayout mWeatherLinearLayout;
-
+    @BindView(R.id.textview_temp) TextView mTextViewTemp;
+    @BindView(R.id.textview_adds) TextView mTextViewAdds;
     private Forecast mForecast;
 
     @Override
@@ -42,7 +41,30 @@ public class WeatherDetailsActivity extends AppCompatActivity {
         mForecast = getIntent().getParcelableExtra(EXTRA_FORECAST);
 
         setTitle();
+        setTemp();
+        setAdds();
         setWeatherLinearLayout();
+    }
+
+    private void setAdds() {
+        String adds = getString(R.string.activity_weather_details_adds,
+                mForecast.pressure,
+                mForecast.humidity,
+                mForecast.clouds);
+
+        mTextViewAdds.setText(adds);
+    }
+
+    private void setTemp() {
+        String temp = getString(R.string.activity_weather_details_temp_details,
+                mForecast.temperature.day,
+                mForecast.temperature.min,
+                mForecast.temperature.max,
+                mForecast.temperature.night,
+                mForecast.temperature.eve,
+                mForecast.temperature.morn);
+
+        mTextViewTemp.setText(temp);
     }
 
     private void setTitle() {
@@ -57,7 +79,7 @@ public class WeatherDetailsActivity extends AppCompatActivity {
             ((TextView) ButterKnife.findById(weatherView, R.id.textview_description)).setText(weather.description);
 
             ImageView imageView = ButterKnife.findById(weatherView, R.id.imageview_icon);
-            mImagesLoader.loadWeatherIcon(imageView,weather.icon);
+            mImagesLoader.loadWeatherIcon(imageView, weather.icon);
 
             mWeatherLinearLayout.addView(weatherView);
         }

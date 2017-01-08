@@ -17,6 +17,24 @@
         android:layout_height="wrap_content"
         android:orientation="vertical">
 
+        <TextView
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:text="@string/activity_weather_details_temp_title"
+            android:textStyle="bold"/>
+
+        <TextView
+            android:id="@+id/textview_temp"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_marginBottom="10dp"/>
+
+        <TextView
+            android:id="@+id/textview_adds"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_marginBottom="10dp"/>
+
         <LinearLayout
             android:id="@+id/linearlayout_weather"
             android:layout_width="match_parent"
