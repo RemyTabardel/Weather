@@ -42,7 +42,7 @@ dependencies {
         exclude module: 'support-annotations'
         exclude group: 'com.android.support'
     }
-    androidTestCompile "com.android.support.test.espresso:espresso-intents:${ESPRESSO_VERSION}"
+    androidTestCompile 'com.android.support.test.espresso:espresso-intents:2.2.1'
     testCompile "junit:junit:4.12"
 
     //**********************// ANDROID SUPPORT //**********************//

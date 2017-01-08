@@ -8,4 +8,6 @@
     <string name="activity_weather_details_temp_title">Températures</string>
     <string name="activity_weather_details_temp_details">jour : %1$.1f°C\nmin : %2$.1f°C\nmax : %3$.1f°C\nnuit : %4$.1f°C\nsoir : %5$.1f°C\nmatin : %6$.1f°C</string>
     <string name="activity_weather_details_adds">pression : %1$.1f\nhumidité : %2$d\nnuages : %3$d</string>
+    <!--content description -->
+    <string name="content_description_weather_icon">Icone de la météo</string>
 </resources>
