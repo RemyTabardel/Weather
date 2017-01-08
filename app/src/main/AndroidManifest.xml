@@ -21,8 +21,7 @@
             </intent-filter>
         </activity>
         <activity
-            android:name=".ui.activities.WeatherDetailsActivity"
-            android:parentActivityName="com.tabardel.weather.ui.activities.WeatherActivity"/>
+            android:name=".ui.activities.WeatherDetailsActivity"/>
     </application>
 
 </manifest>

@@ -1,11 +1,9 @@
 package mock;
 
-import com.tabardel.weather.core.presenters.WeatherPresenter;
 import com.tabardel.weather.services.AppComponent;
 import com.tabardel.weather.services.AppModule;
 import com.tabardel.weather.services.images.ImagesModule;
 import com.tabardel.weather.services.network.NetworkModule;
-import com.tabardel.weather.ui.activities.WeatherDetailsActivity;
 
 import javax.inject.Singleton;
 

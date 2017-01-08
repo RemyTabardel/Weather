@@ -54,12 +54,4 @@ public class WeatherPresenter implements BasePresenter {
         Collections.sort(forecastList.forecasts);
         return forecastList.forecasts;
     }
-
-    @Override public void subscribe() {
-
-    }
-
-    @Override public void unsubscribe() {
-
-    }
 }

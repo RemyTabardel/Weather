@@ -1,6 +1,5 @@
 package com.tabardel.weather.services.parsers;
 
-import android.nfc.FormatException;
 import android.test.suitebuilder.annotation.SmallTest;
 import android.util.JsonReader;
 

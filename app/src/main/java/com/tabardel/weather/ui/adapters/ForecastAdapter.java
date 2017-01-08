@@ -14,6 +14,7 @@ import java.lang.ref.WeakReference;
 import java.text.SimpleDateFormat;
 import java.util.ArrayList;
 import java.util.List;
+import java.util.Locale;
 
 import butterknife.BindView;
 import butterknife.ButterKnife;
@@ -41,7 +42,7 @@ public class ForecastAdapter extends RecyclerView.Adapter<ForecastAdapter.ViewHo
     public ForecastAdapter(Context context, OnItemClickListener onItemClickListener) {
         mWeakContext = new WeakReference<>(context);
         mDataset = new ArrayList<>();
-        mDayDateFormat = new SimpleDateFormat("EEEE dd MMM yyyy");
+        mDayDateFormat = new SimpleDateFormat("EEEE dd MMM yyyy", Locale.getDefault());
         mOnItemClickListener = onItemClickListener;
     }
 

@@ -8,4 +8,7 @@
     <string name="activity_weather_details_temp_title">Temperatures</string>
     <string name="activity_weather_details_temp_details">day : %1$.1f°C\nmin : %2$.1f°C\nmax : %3$.1f°C\nnight : %4$.1f°C\neve : %5$.1f°C\nmorn : %6$.1f°C</string>
     <string name="activity_weather_details_adds">pressure : %1$.1f\nhumidity : %2$d\nclouds : %3$d</string>
+    <!--content description -->
+    <string name="content_description_weather_icon">Weather icon</string>
+
 </resources>

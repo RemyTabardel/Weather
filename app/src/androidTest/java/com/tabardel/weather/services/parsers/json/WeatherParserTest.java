@@ -3,7 +3,6 @@ package com.tabardel.weather.services.parsers.json;
 import android.support.test.runner.AndroidJUnit4;
 import android.util.JsonReader;
 
-import com.tabardel.weather.services.models.Temperature;
 import com.tabardel.weather.services.models.Weather;
 
 import org.junit.Before;

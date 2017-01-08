@@ -3,7 +3,6 @@ package com.tabardel.weather.services.parsers.json;
 import android.support.test.runner.AndroidJUnit4;
 import android.util.JsonReader;
 
-import com.tabardel.weather.services.models.Forecast;
 import com.tabardel.weather.services.models.Temperature;
 
 import org.junit.Before;
@@ -13,7 +12,6 @@ import org.junit.runner.RunWith;
 import mock.JsonReaderMock;
 
 import static junit.framework.Assert.assertEquals;
-import static junit.framework.Assert.assertNotNull;
 
 /**
  * Created by TABARDEL_Remy on 05/01/2017.

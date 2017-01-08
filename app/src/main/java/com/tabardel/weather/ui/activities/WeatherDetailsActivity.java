@@ -15,6 +15,7 @@ import com.tabardel.weather.services.models.Forecast;
 import com.tabardel.weather.services.models.Weather;
 
 import java.text.SimpleDateFormat;
+import java.util.Locale;
 
 import javax.inject.Inject;
 
@@ -68,7 +69,7 @@ public class WeatherDetailsActivity extends AppCompatActivity {
     }
 
     private void setTitle() {
-        SimpleDateFormat simpleDateFormat = new SimpleDateFormat("EEEE dd MMM yyyy");
+        SimpleDateFormat simpleDateFormat = new SimpleDateFormat("EEEE dd MMM yyyy", Locale.getDefault());
 
         setTitle(simpleDateFormat.format(mForecast.date));
     }

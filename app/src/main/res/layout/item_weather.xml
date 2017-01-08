@@ -12,7 +12,9 @@
         android:id="@+id/imageview_icon"
         android:layout_width="@dimen/item_weather_icon_size"
         android:layout_height="@dimen/item_weather_icon_size"
-        app:layout_constraintRight_toRightOf="parent"/>
+        android:contentDescription="@string/content_description_weather_icon"
+        app:layout_constraintRight_toRightOf="parent"
+        />
 
     <TextView
         android:id="@+id/textview_description"

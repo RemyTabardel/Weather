@@ -2,7 +2,6 @@ package com.tabardel.weather.services.network.retrofit.calls;
 
 import com.tabardel.weather.services.models.ForecastList;
 
-import retrofit2.Call;
 import retrofit2.http.GET;
 import retrofit2.http.Query;
 import rx.Observable;

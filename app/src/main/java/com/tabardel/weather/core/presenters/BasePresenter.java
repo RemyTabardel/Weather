@@ -5,7 +5,4 @@ package com.tabardel.weather.core.presenters;
  */
 
 public interface BasePresenter {
-    void subscribe();
-
-    void unsubscribe();
 }
