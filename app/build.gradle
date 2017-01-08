@@ -61,9 +61,7 @@ dependencies {
     compile "com.squareup.okhttp3:logging-interceptor:3.3.0"
 
     //**********************// IMAGE //**********************//
-    //we include both to show how switch implementation in ImageModule with dagger
     compile "com.github.bumptech.glide:glide:3.7.0"
-    compile "com.squareup.picasso:picasso:2.5.2"
 
     //**********************// VIEW BINDS //**********************//
     def BUTTERKNIFE_VERSION = "8.4.0"
